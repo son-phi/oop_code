@@ -38,5 +38,4 @@ class Fraction {
     public void in(){
         System.out.println(numerator+"/"+denominator);
     }
-
 }
