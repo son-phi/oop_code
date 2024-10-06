@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -7,6 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
         sc.nextLine();
+        List<Student> lists = new ArrayList<Student>();
         while (t-- > 0) {
             String name = sc.nextLine();
             String className = sc.nextLine();
@@ -14,12 +15,16 @@ public class Main {
             double price = sc.nextDouble();
             sc.nextLine();
             Student student = new Student(name, className, DOB, price);
+            lists.add(student);
+        }
+        Collections.sort(lists);
+        for (Student student : lists) {
             System.out.println(student);
         }
     }
 }
 
-class Student {
+class Student implements Comparable<Student> {
     private String id;
     private String name;
     private String className;
@@ -29,10 +34,25 @@ class Student {
     public Student(String name, String className, String DOB, double score) {
         stt++;
         this.id = String.format("B20DCCN%03d",stt);
-        this.name = name;
+        this.name = setName(name);
         this.className = className;
         this.DOB = setD0B(DOB);
         this.score = score;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public String setName(String name) {
+        String[] words = name.trim().split("\\s+");
+        StringBuilder sb = new StringBuilder ();
+        for (String w : words){
+            sb.append(Character.toUpperCase(w.charAt(0)));
+            sb.append(w.substring(1).toLowerCase());
+            sb.append(' ');
+        }
+        return sb.toString().trim();
     }
 
     public String setD0B(String D0B) {
@@ -47,6 +67,11 @@ class Student {
         } else { res += split[1]+"/";}
         res += split[2];
         return res;
+    }
+
+    @Override
+    public int compareTo(Student other) {
+        return -(this.getScore().compareTo(other.getScore()));
     }
 
     @Override
