@@ -17,4 +17,10 @@ public class Teacher extends Person {
             this.salary = salary;
         }
     }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Salary : " + getSalary());
+    }
 }

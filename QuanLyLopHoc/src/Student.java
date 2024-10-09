@@ -17,4 +17,10 @@ public class Student extends Person {
             this.gpa = gpa;
         }
     }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("GPA: " + getGpa());
+    }
 }
