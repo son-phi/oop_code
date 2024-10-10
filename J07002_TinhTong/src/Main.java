@@ -9,10 +9,19 @@ public class Main {
         Scanner sc = new Scanner(new File("DATA.in")) ;
         long sum =0;
         while (sc.hasNext()) {
-            String s = sc.next();
-            try{
-                sum += Integer.parseInt(s);
-            } catch (Exception e){}
+//            Solution 1:
+//            String s = sc.next();
+//            try{
+//                sum += Integer.parseInt(s);
+//            } catch (Exception e){}
+
+
+//            Solution 2:
+            if (sc.hasNextInt()){
+                sum += sc.nextInt();
+            }else {
+                sc.next();
+            }
         }
         System.out.println(sum);
     }
