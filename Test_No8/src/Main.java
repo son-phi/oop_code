@@ -16,7 +16,6 @@ public class Main {
             sc.nextLine();
             users.add(new User(username, password));
         }
-
         int n = sc.nextInt();
         for (int i = 0; i < n; i++) {
             String username = sc.next();
@@ -27,13 +26,10 @@ public class Main {
                     user.setLogin();
                 }
             }
-
         }
-
         for (User user : users) {
             System.out.printf("%d ", user.getLogin());
         }
-
     }
 }
 
@@ -45,25 +41,13 @@ class User{
         this.username = username;
         this.password = password;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public boolean authenticate(String username, String password) {
         return this.username.equals(username) && this.password.equals(password);
     }
-
     public void setLogin() {
         this.login++;
     }
-
     public int getLogin() {
         return login;
     }
-
 }
